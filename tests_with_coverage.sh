@@ -27,8 +27,9 @@ run_tests() {
         rm -f coverage/lcov.info
         rm -f coverage/lcov-final.info
         flutter test --coverage
+        ch_dir
     else
-        printf "\n${red}Error: this is not a Flutter project${none}"
+        printf "\n${red}Error: this is not a Flutter project${none}\n"
         exit 1
     fi
 }
@@ -38,11 +39,30 @@ run_report() {
         lcov -r coverage/lcov.info lib/resources/l10n/\* lib/\*/fake_\*.dart \
              -o coverage/lcov-final.info
         genhtml -o coverage coverage/lcov-final.info
-        open coverage/index-sort-l.html
+        open_cov
     else
-        printf "\n${red}Error: no coverage info was generated${none}"
+        printf "\n${red}Error: no coverage info was generated${none}\n"
         exit 1
     fi
+}
+
+ch_dir(){
+    dir=$(pwd)
+    input="$dir/coverage/lcov.info"
+    output="$dir/coverage/lcov_new.info"
+    echo "$input"
+    while read line
+    do
+        secondString="SF:$dir/"
+        echo "${line/SF:/$secondString}" >> $output
+    done < "$input"
+
+    mv $output $input
+}
+
+open_cov(){
+    # This depends on your system, I use Debian, with Google Chrome (as you can see)
+    google-chrome coverage/index-sort-l.html
 }
 
 case $1 in
