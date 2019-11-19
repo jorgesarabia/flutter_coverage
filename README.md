@@ -18,7 +18,7 @@ Si es que hay una mejor forma de solucionar este problema, la sugerencia es bien
 
 ## Tareas del script
 Este trabajo está basado en este [script](https://gist.github.com/adavis/c003d435d9633253483bc64d6ffade8b). 
-Una explicación detallada de como funciona el mismo se encuentra en este [artículo](http://adavis.info/2019/03/bash-scripting-for-flutter-tests-and-code-coverage-reports.html)
+Una explicación detallada de como funciona el mismo se encuentra en este [artículo](http://adavis.info/2019/03/bash-scripting-for-flutter-tests-and-code-coverage-reports.html).
 
 Lo que se agregó es lo siguiente: 
 - La función `ch_dir`, que lo que hace es reemplazar los path en el archivo lcov.info
