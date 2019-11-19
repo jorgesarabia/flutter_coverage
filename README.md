@@ -31,7 +31,7 @@ Tested in a Debian 8 environment
 
 - Clone this project
 
-`git clone https://github.com/jorgesarabia/clean-my-report.git`
+`git clone https://github.com/jorgesarabia/flutter_coverage.git`
 
 ## You can copy the file into your Flutter environment, or create an alias.
 
@@ -55,12 +55,12 @@ vim ~/.bash_aliases
 - Add the alias:
 
 ```
-alias <tu_alias>='bash ~/path_a_este_proyecto/tests_with_coverage.sh'
+alias <your_alias>='bash ~/path_to_this/tests_with_coverage.sh'
 ```
 
 - Test the script:
 
 ```
 cd path_to_flutter_project
-<tu_alias>
+<your_alias>
 ```
