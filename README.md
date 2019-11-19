@@ -1,64 +1,64 @@
 # flutter_coverage
-Inspirado en el gran trabajo de [Annyce Davis](https://github.com/adavis).
-Fue creado para automatizar tareas a la hora de testear aplicaciones realizadas en [Flutter](https://flutter.dev/).
+Inspired by the great work of [Annyce Davis](https://github.com/adavis).
+It was created to automate tasks when testing [Flutter](https://flutter.dev/) applications.
 
-## ¿Por qué fue creado?
-El problema fue que tenía un error con el comando `genhtml -o coverage coverage/lcov.info`.
-Al parecer es un error bastante común y tiene que ver con la forma en que el comando toma los `path`.
-Me arrojaba el siguiente error en consola.
+## Why was it created?
+The problem was that I had an error with the command `genhtml -o coverage coverage/lcov.info`.
+Apparently it is a fairly common error and has to do with the way the command takes the `path`.
+It throws the following error.
 
 ```
 Processing file <file>.dart
 genhtml: ERROR: cannot read <file>.dart
 ```
 
-Estube probando varias formas de generar el reporte, pero sin éxito. 
-Por lo que para no seguir perdiendo el tiempo decidí relalizar este script. 
-Si es que hay una mejor forma de solucionar este problema, la sugerencia es bienvenida.
+I was testing several ways to generate the report but without success.
+So, in order not to keep wasting time, I decided to make this script.
+If there is a better way to solve this problem, the suggestion is welcome.
 
-## Tareas del script
-Este trabajo está basado en este [script](https://gist.github.com/adavis/c003d435d9633253483bc64d6ffade8b). 
-Una explicación detallada de como funciona el mismo se encuentra en este [artículo](http://adavis.info/2019/03/bash-scripting-for-flutter-tests-and-code-coverage-reports.html).
+## Script tasks
+This work is based on this [script](https://gist.github.com/adavis/c003d435d9633253483bc64d6ffade8b). 
+A detailed explanation of how it works is found in this [article](http://adavis.info/2019/03/bash-scripting-for-flutter-tests-and-code-coverage-reports.html).
 
-Lo que se agregó es lo siguiente: 
-- La función `ch_dir`, que lo que hace es reemplazar los path en el archivo lcov.info
-- La función `open_cov`, que lo que hace es abrir el archivo en el navegador. 
-Se puso en una nueva función para que sea más sencillo ajustarlo a las necesidades del que descarga este script.
+The new here is the following: 
+- The `ch_dir` function, what it does is replace the path in the lcov.info file
+- The `open_cov`function, what it does is open the file in the browser.
+It was put into a new function to be easier to adjust to the needs of those who download this script.
 
-# Para probar el script
+# To test the script
 
-Probado en un entorno Debian 8
+Tested in a Debian 8 environment
 
-- Clonar este proyecto
+- Clone this project
 
 `git clone https://github.com/jorgesarabia/clean-my-report.git`
 
-## Puede copiar el archivo a su entorno Flutter, o bien crear un alias. 
+## You can copy the file into your Flutter environment, or create an alias.
 
-### Para copiar
+### To copy
 
 `cp path_to_repo/test_with_coverage.sh path_to_project/` 
 
-- Probar el script:
+- Test the script:
 
 ```
 cd path_to_flutter_project
 bash test_with_coverage.sh
 ```
 
-### Crear un alias (Debian)
-- Abrir el archivo donde están los alias:
+### Create an alias (Debian)
+- To define an alias, open bash_aliases:
 
 ```
 vim ~/.bash_aliases
 ```
-- Agregar el alias:
+- Add the alias:
 
 ```
 alias <tu_alias>='bash ~/path_a_este_proyecto/tests_with_coverage.sh'
 ```
 
-- Probar el script:
+- Test the script:
 
 ```
 cd path_to_flutter_project
