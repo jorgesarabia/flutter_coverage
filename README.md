@@ -22,7 +22,7 @@ A detailed explanation about how it works appears in this [article](http://adavi
 
 I added the following: 
 - The `ch_dir` function, which replaces the path in the lcov.info file.
-- The `open_cov`function, which just opens the browser. I separated this task in another function to be easier to adjust to the needs of those who download this project. So, if you don’t have google-chrome just change the line 65 in the `open_cov`.
+- The `open_cov`function, which just opens the browser. I separated this task in another function to be easier to adjust to the needs of those who download this project. So, if you don’t have google-chrome just change the line 67 in the `open_cov`.
 
 
 # To test the script (Tested in a Debian 8 environment)

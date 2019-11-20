@@ -17,6 +17,9 @@ where:
     -r, --report
         generate a coverage report
         (requires lcov, install with Homebrew)
+    -o, --open
+        run this line (google-chrome coverage/index-sort-l.html)
+        you can change this in the line 67.
     -h, --help
         print this message
 "
@@ -39,7 +42,6 @@ run_report() {
         lcov -r coverage/lcov.info lib/resources/l10n/\* lib/\*/fake_\*.dart \
              -o coverage/lcov-final.info
         genhtml -o coverage coverage/lcov-final.info
-        open_cov
     else
         printf "\n${red}Error: no coverage info was generated${none}\n"
         exit 1
@@ -74,6 +76,11 @@ case $1 in
         ;;    
     -r|--report)
         run_report
+        ;;
+    -o|--open)
+        run_tests
+        run_report
+        open_cov
         ;;
     *)
         run_tests
