@@ -23,6 +23,7 @@ A detailed explanation about how it works appears in this [article](http://adavi
 I added the following: 
 - The `ch_dir` function, which replaces the path in the lcov.info file.
 - The `open_cov`function, which just opens the browser. I separated this task in another function to be easier to adjust to the needs of those who download this project. So, if you don’t have google-chrome just change the line 67 in the `open_cov`.
+- The `-o` or `--open` flag, to open the browser automatically.
 
 
 # To test the script (Tested in a Debian 8 environment)
@@ -60,9 +61,10 @@ vim ~/.bash_aliases
 alias <your_alias>='bash ~/path_to_this_project/tests_with_coverage.sh'
 ```
 
-- Run the script:
+- Run the script and open the report in the browser(`-o` flag):
 
 ```
 cd path_to_flutter_project
-<your_alias>
+<your_alias> -o
 ```
+- After that, you can run only `<your alias>` and refresh the report page in the browser.
