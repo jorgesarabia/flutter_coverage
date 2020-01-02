@@ -2,26 +2,36 @@
 
 red=$(tput setaf 1)
 none=$(tput sgr0)
+filename=
+open_browser=
 
 show_help() {
-    printf "usage: $0 [--help] [--report] [--test] [<path to package>]
-
+    printf "
 Script for running all unit and widget tests with code coverage.
-(run from root of repo)
+(run it from your root Flutter's project)
+
+*Important: requires lcov
+
+    
+    Usage: 
+
+    $0 [--help] [--open] [--filename <path>]
 
 where:
-    <path to package>
-        runs all tests with coverage and reports
-    -t, --test
-        runs all tests with coverage, but no report
-    -r, --report
-        generate a coverage report
-        (requires lcov, install with Homebrew)
     -o, --open
-        run this line (google-chrome coverage/index-sort-l.html)
-        you can change this in the line 67.
+        Open the coverage in your browser,
+        Default is google-chrome you can change this in the function open_cov().
     -h, --help
         print this message
+    -f <path>, --filename <path>
+        Run a particular test file. For example:
+            
+            -f test/a_particular_test.dart
+            
+        Or you can run all tests in a directory
+
+            -f test/some_directory/
+
 "
 }
 
@@ -29,7 +39,7 @@ run_tests() {
     if [[ -f "pubspec.yaml" ]]; then
         rm -f coverage/lcov.info
         rm -f coverage/lcov-final.info
-        flutter test --coverage
+        flutter test --coverage "$filename"
         ch_dir
     else
         printf "\n${red}Error: this is not a Flutter project${none}\n"
@@ -67,23 +77,29 @@ open_cov(){
     google-chrome coverage/index-sort-l.html
 }
 
-case $1 in
-    -h|--help)
-        show_help
-        ;;
-    -t|--test)
-        run_tests
-        ;;    
-    -r|--report)
-        run_report
-        ;;
-    -o|--open)
-        run_tests
-        run_report
-        open_cov
-        ;;
-    *)
-        run_tests
-        run_report
-        ;;
-esac
+while [ "$1" != "" ]; do
+    case $1 in
+        -h|--help)
+            show_help
+            exit
+            ;;
+        -o|--open)
+            open_browser=1
+            ;;
+        -f|--filename)
+            shift
+            filename=$1
+            ;;
+        *)
+            show_help
+            exit
+            ;;
+    esac
+    shift
+done
+
+run_tests
+run_report
+if [ "$open_browser" = "1" ]; then
+    open_cov
+fi
