@@ -66,14 +66,7 @@ cd path_to_flutter_project
 
 - After that, you can run only `<your alias>` and refresh the report page in the browser.
 
-## Run a particular test file(`-f` flag):
-
-```
-cd path_to_flutter_project
-<your_alias> -f test/a_particular_test.dart
-```
-
-- Or you can run all the test in a particular directory:
+## Run with the `-f` flag:
 
 Suppose you have this structure
 
@@ -88,7 +81,16 @@ Suppose you have this structure
 
 ```
 
-then, running
+- You can run a particular file
+
+```
+cd path_to_flutter_project
+<your_alias> -f test/User/one_test.dart
+```
+
+- Or you can run all the test in a particular directory:
+
+This command 
 
 ```
 <your_alias> -f test/User -o
