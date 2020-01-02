@@ -1,8 +1,8 @@
+![Coverage](coverage.png)
+
 # flutter_coverage
 Inspired by the great work of [Annyce Davis](https://github.com/adavis).
 It was created to automate tasks when testing [Flutter](https://flutter.dev/) applications.
-
-![Coverage](coverage.png)
 
 ## Why was it created?
 The problem was that I got an error when I ran the command `genhtml -o coverage coverage/lcov.info`.
