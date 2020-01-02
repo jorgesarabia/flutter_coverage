@@ -22,8 +22,9 @@ A detailed explanation about how it works appears in this [article](http://adavi
 
 I added the following: 
 - The `ch_dir` function, which replaces the path in the lcov.info file.
-- The `open_cov`function, which just opens the browser. I separated this task in another function to be easier to adjust to the needs of those who download this project. So, if you don’t have google-chrome just change the line 67 in the `open_cov`.
-- The `-o` or `--open` flag, to open the browser automatically.
+- The `open_cov` function, which just opens the browser. I separated this task in another function to be easier to adjust to the needs of those who download this project. So, if you don’t have google-chrome just change the line `google-chrome coverage/index-sort-l.html` in the `open_cov` function.
+- The `-o` or `--open` flag, to open the browser automatically, and to prevent to open the browser everytime you run the tests.
+- The `-f` or `--filename` flag, to run the test of a particular file or directory with tests.
 
 
 # To test the script (Tested in a Debian 8 environment)
@@ -32,39 +33,65 @@ I added the following:
 
 `git clone https://github.com/jorgesarabia/flutter_coverage.git`
 
-## You can copy the file into your Flutter environment, or create an alias.
 
+## Instructions to run the script:
 
-### Instructions to copy and run:
-
-- To copy, run:
-
-`cp path_to_repo/test_with_coverage.sh path_to_project/` 
-
-- Run the script:
+- Just run:
 
 ```
 cd path_to_flutter_project
-bash test_with_coverage.sh
+bash path_to_this_project/test_with_coverage.sh <flags>
 ```
 
-### Instructions to create an alias (Debian).
-- Open the file bash_aliases:
+## I recommend to create an alias (instruction tested in a Debian environment).
 
+- Open the file bash_aliases:
 
 ```
 vim ~/.bash_aliases
 ```
+
 - Add the alias:
 
 ```
 alias <your_alias>='bash ~/path_to_this_project/tests_with_coverage.sh'
 ```
 
-- Run the script and open the report in the browser(`-o` flag):
+## Run the script and open the report in the browser(`-o` flag):
 
 ```
 cd path_to_flutter_project
 <your_alias> -o
 ```
+
 - After that, you can run only `<your alias>` and refresh the report page in the browser.
+
+## Run a particular test file(`-f` flag):
+
+```
+cd path_to_flutter_project
+<your_alias> -f test/a_particular_test.dart
+```
+
+- Or you can run all the test in a particular directory:
+
+Suppose you have this structure
+
+```
+- test
+    |_ User
+        |_ one_test.dart
+        |_ two_test.dart
+    |_ Other
+        |_ three_test.dart
+        |_ four_test.dart
+
+```
+
+then, running
+
+```
+<your_alias> -f test/User -o
+```
+
+Will run all the tests in the files `one_test.dart` and `two_test.dart`. Also, it will open the report in the browser.
