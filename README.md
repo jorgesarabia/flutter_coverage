@@ -66,7 +66,7 @@ cd path_to_flutter_project
 
 - After that, you can run only `<your alias>` and refresh the report page in the browser.
 
-## Run a particular test file(`-f` flag):
+## Run with the `-f` flag:
 
 Suppose you have this structure
 
