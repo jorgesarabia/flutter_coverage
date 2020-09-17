@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
+#####################################################################################
+# Description : It was created to automate tasks when testing Flutter applications. 
+#               It runs the tests and shows the code coverage with a simple command.
+# Author      : Jorge Sarabia, inspired by the great work of Annyce Davis.
+# Email       : jorge@sarabiajor.ge
+# License     : MIT License
+# URL         : https://github.com/jorgesarabia/flutter_coverage
+#####################################################################################
 
 red=$(tput setaf 1)
 none=$(tput sgr0)
@@ -73,8 +81,11 @@ ch_dir(){
 }
 
 open_cov(){
-    # This depends on your system, I use Debian, with Google Chrome (as you can see)
-    google-chrome coverage/index-sort-l.html
+    # This depends on your system 
+    # Google Chrome:
+    # google-chrome coverage/index-sort-l.html
+    # Mozilla:
+    firefox coverage/index-sort-l.html
 }
 
 while [ "$1" != "" ]; do
